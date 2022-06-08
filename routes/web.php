@@ -13,9 +13,9 @@ use App\videos;
  */
 
 Route::get('/', function () {
-    $imagenes = Galeria::all()->toArray();
-    $videos   = videos::all()->toArray();
-    return view('welcome', compact('imagenes'), compact('videos'));
+    // $imagenes = Galeria::all()->toArray();
+    // $videos   = videos::all()->toArray();
+    return view('welcome');
 });
 
 Auth::routes();

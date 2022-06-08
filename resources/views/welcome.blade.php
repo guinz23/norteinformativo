@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- Styles -->
-        
+<link href="https://vjs.zencdn.net/7.3.0/video-js.css" rel="stylesheet">
+<link href="https://unpkg.com/silvermine-videojs-quality-selector@1.1.2/dist/css/quality-selector.css" rel="stylesheet">
     </head>
     <body>
     <section style="background-color:#e65100; height:90px">
@@ -59,139 +60,31 @@
   <h2 style="background-color:#263238;color:white;text-align:center"><b>NorteInformativo Tv</b></h2>
   <div  class="panel panel-default">
     <div id="panel" class="panel-heading" >
-    <div  class="col-sm11">  <iframe width="800" height="600" border="0" style="border: 0; box-shadow: 0px 0px 0 #fff;" src="http://www.reproface.com.ar/video/player/norteinformativo"></iframe>     </div>
     <div  class="col-sm12">
-    <iframe id="player_movile" width="180" height="55" border="0" style="border: 0; box-shadow: 0px 0px 0 #fff;" src="http://www.reproface.com.ar/video/links/norteinformativo"></iframe> 
+      <video id="videojs" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls preload="auto">
+
+  <source src="https://videohd.live:19360/8076/8076.m3u8" type="application/x-mpegURL">
+  <p class="vjs-no-js">
+  To view this video please enable JavaScript, and consider upgrading to a web browser that
+  <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+ </p>
+</video>
     </div>
    </div>
  </div>
  <!--second panel-->
- <div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Programacion / Patrocinadores</b></h2>
-  <div class="row">
-    <div  class="col-md-5">
-       <img id="img-tv-programming"  style="background-image: url(https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/36583100_1716171561771282_7634071839110594560_o.jpg?_nc_cat=0&oh=3f68f39be70a4f2151e43d7d69c928cd&oe=5BF08B97);background-size: 100% 100%;" alt="">
-    </div>  
-    <div  class="col-md-5">
-    <div  class="embed-responsive embed-responsive-16by9">
-    <iframe  id="video-tv-programming" src="https://www.youtube.com/embed/POx5Bz6i-W4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-    </div> 
- </div>
-</div>
-</div>
-<!--third  panel-->
-<div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Galeria</b></h2>
-  <div class="row">
-  @foreach($imagenes as $pict)
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <a href="{{asset('storage/')}}/{{$pict['img']}}" target="_blank">
-          <img src="{{asset('storage/')}}/{{$pict['img']}}" alt="Lights" style="width:100%;height:300px;">
-          
-          <div class="caption">
-          <p>
-            <br>
-           
-            @guest
-            {{$pict['descripction']}}
-           @else
-           {{$pict['descripction']}}
-           <form action="{{action('GaleriaController@destroy',$pict['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-            <br>
-            </p>
-            @endguest
-          </div>
-        </a>
-      </div>
-    </div>
-    @endforeach
-   
-   </div>
+
 </div>
 
-<!-- cuarto panel-->
-<div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Videos</b></h2>
-  
-  <div class="row">
-  @foreach($videos as $vid)
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <iframe width="350" height="315" src="https://www.youtube.com/embed/{{$vid['url']}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          <div class="caption">
-            <p>{{$vid['descripcion']}}</p>
-            <form action="{{action('VideosController@destroy',$vid['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-          </div>
-        </a>
-      </div>
-    </div>
-@endforeach
-  
- </div>
-</div>
 
  </div>
 </div>
 </div>
 <section id="footer">
 		<div class="container">
-			<div class="row text-center text-xs-center text-sm-left text-md-left">
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Numeros Importantes</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href=""><i class="fa fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
-					</ul>
-				</div>
-				</hr>
-			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-					<p>Derechos Reservados 2018 TCU UTN</p>
+					<p class=" text-white">Derechos Reservados 2022 NORTE INFORMATIVO TV</p>
 					<p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
 				</div>
 				</hr>
@@ -199,6 +92,10 @@
 		</div>
 	</section>
     </body>
+   <script src="https://vjs.zencdn.net/7.3.0/video.js"></script>
+<script src="https://unpkg.com/silvermine-videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+<script type="text/javascript">
+ var player = videojs('videojs');</script>
     <style>
      body{
     background-image: url(https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/39883680_1847027922052249_8597833410519498752_o.jpg?_nc_cat=0&oh=9b7fc60cbe72c92fac9fa07ebf8e89c1&oe=5BF30AB5);
@@ -316,4 +213,3 @@
 }
     </style>
 </html>
-

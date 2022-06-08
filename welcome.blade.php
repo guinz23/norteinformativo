@@ -65,86 +65,8 @@
    </div>
  </div>
  <!--second panel-->
- <div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Programacion / Patrocinadores</b></h2>
-  <div class="row">
-    <div  class="col-md-5">
-       <img id="img-tv-programming"  style="background-image: url(https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-9/36583100_1716171561771282_7634071839110594560_o.jpg?_nc_cat=0&oh=3f68f39be70a4f2151e43d7d69c928cd&oe=5BF08B97);background-size: 100% 100%;" alt="">
-    </div>  
-    <div  class="col-md-5">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/POx5Bz6i-W4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div> 
- </div>
-</div>
-</div>
-<!--third  panel-->
-<div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Galeria</b></h2>
-  <div class="row">
-  @foreach($imagenes as $pict)
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <a href="{{asset('storage/')}}/{{$pict['img']}}" target="_blank">
-          <img src="{{asset('storage/')}}/{{$pict['img']}}" alt="Lights" style="width:100%;height:300px;">
-          
-          <div class="caption">
-          <p>
-            <br>
-           
-            @guest
-            {{$pict['descripction']}}
-           @else
-           {{$pict['descripction']}}
-           <form action="{{action('GaleriaController@destroy',$pict['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-            <br>
-            </p>
-            @endguest
-          </div>
-        </a>
-      </div>
-    </div>
-    @endforeach
-   
-   </div>
-</div>
 
-<!-- cuarto panel-->
-<div class="container">
-  <h2 style="background-color:#263238;color:white;text-align:center"><b>Videos</b></h2>
-  
-  <div class="row">
-  @foreach($videos as $vid)
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <iframe width="350" height="315" src="https://www.youtube.com/embed/{{$vid['url']}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          <div class="caption">
-          <br>
-           
-            @guest
-            <p>{{$vid['descripcion']}}
-            @else
-           {{$vid['descripcion']}}
-            <form action="{{action('VideosController@destroy',$vid['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
-          <br>
-          </p>
-           @endguest
-          </div>
-        </a>
-      </div>
-    </div>
-@endforeach
-  
- </div>
 </div>
-
  </div>
 </div>
 </div>
